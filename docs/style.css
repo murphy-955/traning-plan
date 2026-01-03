@@ -1,0 +1,712 @@
+/* 训练计划样式 */
+.plan-container {
+    margin: 20px auto;
+    padding: 15px;
+    background: #6c757d; /* 灰色背景 */
+    color: white; /* 白色文字 */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+/* 鼠标移入效果 */
+.plan-container:hover {
+    background: white; /* 白色背景 */
+    color: black; /* 黑色文字 */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.08);
+    border-color: #dee2e6;
+}
+
+/* 确保大部分元素继承容器的文字颜色 - 增强优先级 */
+.plan-container *,
+.plan-container *:before,
+.plan-container *:after {
+    color: inherit !important;
+    transition: color 0.3s ease !important;
+}
+
+/* 增强docsify markdown部分的文字颜色继承 */
+.plan-container .markdown-section * {
+    color: inherit !important;
+}
+
+/* 修复标题文字颜色 */
+.plan-container h4 {
+    color: inherit !important;
+}
+
+/* 修复表格文字颜色（除了泳姿） */
+.plan-container table *:not(.workout-stroke) {
+    color: inherit !important;
+}
+
+/* 修复分割线颜色 */
+.plan-container hr.divider {
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.5), transparent) !important;
+}
+
+.plan-container:hover hr.divider {
+    background: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.2), transparent) !important;
+}
+
+/* 调整表头颜色 */
+.plan-container .workout-table th {
+    background: rgba(255, 255, 255, 0.2) !important;
+    color: white !important;
+}
+
+.plan-container:hover .workout-table th {
+    background: #f5f5f5 !important;
+    color: #333 !important;
+}
+
+/* 将训练时间颜色写死为蓝色 */
+.plan-container .plan-time {
+    color: inherit !important;
+}
+
+.plan-container .plan-time span {
+    transition: none !important;
+}
+
+.plan-container:hover .plan-time span {
+    color: blue !important;
+    transition: none !important;
+}
+
+/* 为泳姿设置固定颜色 */
+.plan-container .workout-stroke {
+    transition: none !important;
+}
+
+.plan-container:hover .workout-stroke {
+    transition: none !important;
+}
+
+/* 蝶泳 - 紫色 */
+.plan-container .workout-stroke.butterfly {
+    background: #d1c4e9 !important;
+    color: #512da8 !important;
+}
+
+.plan-container:hover .workout-stroke.butterfly {
+    background: #d1c4e9 !important;
+    color: #512da8 !important;
+}
+
+/* 仰泳 - 绿色 */
+.plan-container .workout-stroke.backstroke {
+    background: #c8e6c9 !important;
+    color: #2e7d32 !important;
+}
+
+.plan-container:hover .workout-stroke.backstroke {
+    background: #c8e6c9 !important;
+    color: #2e7d32 !important;
+}
+
+/* 蛙泳 - 橙色 */
+.plan-container .workout-stroke.breaststroke {
+    background: #ffe0b2 !important;
+    color: #ef6c00 !important;
+}
+
+.plan-container:hover .workout-stroke.breaststroke {
+    background: #ffe0b2 !important;
+    color: #ef6c00 !important;
+}
+
+/* 自由泳 - 蓝色 */
+.plan-container .workout-stroke.freestyle {
+    background: #bbdefb !important;
+    color: #1565c0 !important;
+}
+
+.plan-container:hover .workout-stroke.freestyle {
+    background: #bbdefb !important;
+    color: #1565c0 !important;
+}
+
+/* 主项 - 红色 */
+.plan-container .workout-stroke.main {
+    background: #ffcdd2 !important;
+    color: #c62828 !important;
+}
+
+.plan-container:hover .workout-stroke.main {
+    background: #ffcdd2 !important;
+    color: #c62828 !important;
+}
+
+/*其他训练项目 - 黄色 */
+.plan-container .workout-stroke.other {
+    background: #fff9c4 !important;
+    color: #f57f17 !important;
+}
+
+.plan-container:hover .workout-stroke.other {
+    background: #fff9c4 !important;
+    color: #f57f17 !important;
+}
+
+/* 为训练目的设置固定颜色 */
+.plan-container .plan-purpose {
+    transition: none !important;
+}
+
+.plan-container:hover .plan-purpose {
+    transition: none !important;
+}
+
+/* 有氧 - 浅绿色 */
+.plan-container .plan-purpose.aerobic {
+    background: #e8f5e8 !important;
+    color: #2e7d32 !important;
+}
+
+.plan-container:hover .plan-purpose.aerobic {
+    background: #e8f5e8 !important;
+    color: #2e7d32 !important;
+}
+
+/* 高有氧 - 深绿色 */
+.plan-container .plan-purpose.high-aerobic {
+    background: #c8e6c9 !important;
+    color: #1b5e20 !important;
+}
+
+.plan-container:hover .plan-purpose.high-aerobic {
+    background: #c8e6c9 !important;
+    color: #1b5e20 !important;
+}
+
+/* 强度 - 橙色 */
+.plan-container .plan-purpose.strength {
+    background: #fff3e0 !important;
+    color: #ef6c00 !important;
+}
+
+.plan-container:hover .plan-purpose.strength {
+    background: #fff3e0 !important;
+    color: #ef6c00 !important;
+}
+
+/* 速度 - 蓝色 */
+.plan-container .plan-purpose.speed {
+    background: #e3f2fd !important;
+    color: #1565c0 !important;
+}
+
+.plan-container:hover .plan-purpose.speed {
+    background: #e3f2fd !important;
+    color: #1565c0 !important;
+}
+
+/* 比赛速度 - 深蓝色 */
+.plan-container .plan-purpose.race-speed {
+    background: #bbdefb !important;
+    color: #0d47a1 !important;
+}
+
+.plan-container:hover .plan-purpose.race-speed {
+    background: #bbdefb !important;
+    color: #0d47a1 !important;
+}
+
+/* 调整 - 紫色 */
+.plan-container .plan-purpose.adjust {
+    background: #f3e5f5 !important;
+    color: #7b1fa2 !important;
+}
+
+.plan-container:hover .plan-purpose.adjust {
+    background: #f3e5f5 !important;
+    color: #7b1fa2 !important;
+}
+
+/* 陆上 - 灰色 */
+.plan-container .plan-purpose.land {
+    background: #e0e0e0 !important;
+    color: #424242 !important;
+}
+
+.plan-container:hover .plan-purpose.land {
+    background: #e0e0e0 !important;
+    color: #424242 !important;
+}
+
+/* 调整表格行背景色，覆盖docsify默认的交替行样式 */
+.plan-container .workout-table tr {
+    background: transparent !important;
+}
+
+.plan-container .workout-table tr:nth-child(odd),
+.plan-container .workout-table tr:nth-child(even) {
+    background: transparent !important;
+}
+
+/* 调整表格单元格背景 */
+.plan-container .workout-table td {
+    background: rgba(255, 255, 255, 0.1) !important;
+}
+
+.plan-container:hover .workout-table tr {
+    background: transparent !important;
+}
+
+.plan-container:hover .workout-table td {
+    background: white !important;
+}
+
+/* 调整表格整体样式 */
+.plan-container .workout-table {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.plan-container:hover .workout-table {
+    background: white !important;
+    border-color: #dee2e6 !important;
+}
+
+/* 修复计划日期样式 */
+.plan-container .plan-date {
+    color: inherit !important;
+}
+
+/* 修复计划目的样式 */
+.plan-container .plan-purpose {
+    color: inherit !important;
+}
+
+/* 修复训练项目样式 */
+.plan-container .workout-distance {
+    color: inherit !important;
+}
+
+.plan-container .workout-stroke {
+    color: inherit !important;
+}
+
+.plan-container .workout-detail {
+    color: inherit !important;
+}
+
+.plan-container .workout-note {
+    color: inherit !important;
+}
+
+/* 修复hover状态下的计划目的样式 */
+.plan-container:hover .plan-purpose.adjust {
+    background: #e8f5e8 !important;
+    color: #2e7d32 !important;
+}
+
+.plan-container:hover .plan-purpose.strength {
+    background: #fff3e0 !important;
+    color: #ef6c00 !important;
+}
+
+.plan-container:hover .plan-purpose.endurance {
+    background: #e3f2fd !important;
+    color: #1565c0 !important;
+}
+
+.plan-container:hover .plan-purpose.speed {
+    background: #f3e5f5 !important;
+    color: #7b1fa2 !important;
+}
+
+/* 训练计划通用样式变量 */
+:root {
+    --plan-bg-color: #f8f9fa;
+    --plan-border-radius: 8px;
+    --plan-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --plan-padding: 15px;
+    --plan-margin: 20px auto;
+
+    --header-date-color: #333;
+    --header-date-size: 1.5rem;
+
+    --purpose-adjust-bg: #e8f5e8;
+    --purpose-adjust-color: #2e7d32;
+    --purpose-strength-bg: #fff3e0;
+    --purpose-strength-color: #ef6c00;
+    --purpose-endurance-bg: #e3f2fd;
+    --purpose-endurance-color: #1565c0;
+    --purpose-speed-bg: #f3e5f5;
+    --purpose-speed-color: #7b1fa2;
+
+    --table-bg: white;
+    --table-header-bg: #f5f5f5;
+    --table-header-color: #333;
+    --table-border: 1px solid #e0e0e0;
+
+    --stroke-freestyle-bg: #e3f2fd;
+    --stroke-freestyle-color: #1565c0;
+    --stroke-backstroke-bg: #e8f5e8;
+    --stroke-backstroke-color: #2e7d32;
+    --stroke-breaststroke-bg: #fff3e0;
+    --stroke-breaststroke-color: #ef6c00;
+    --stroke-butterfly-bg: #f3e5f5;
+    --stroke-butterfly-color: #7b1fa2;
+    --stroke-main-bg: #ffebee;
+    --stroke-main-color: #c62828;
+}
+
+.plan-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.plan-date {
+    font-size: var(--header-date-size);
+    font-weight: bold;
+    margin-right: 20px;
+    color: var(--header-date-color);
+}
+
+.plan-purpose {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin-right: 15px;
+}
+
+/*调整*/
+.plan-purpose.adjust {
+    background: var(--purpose-adjust-bg);
+    color: var(--purpose-adjust-color);
+}
+
+/*强度*/
+.plan-purpose.strength {
+    background: var(--purpose-strength-bg);
+    color: var(--purpose-strength-color);
+}
+
+/*耐力*/
+.plan-purpose.endurance {
+    background: var(--purpose-endurance-bg);
+    color: var(--purpose-endurance-color);
+}
+
+/*速度*/
+.plan-purpose.speed {
+    background: var(--purpose-speed-bg);
+    color: var(--purpose-speed-color);
+}
+
+.plan-time {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 15px;
+    display: flex;
+}
+
+/* 分割线样式 */
+.divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, #e0e0e0, transparent);
+    margin: 15px 0;
+    border: none;
+}
+
+.divider.thin {
+    height: 1px;
+    margin: 10px 0;
+}
+
+.divider.thick {
+    height: 2px;
+    margin: 20px 0;
+}
+
+.plan-content {
+    margin-top: 15px;
+}
+
+.plan-content h4 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+/* 训练表格样式 */
+.workout-table {
+    width: 100%;
+    min-width: 600px; /* 确保表格有最小宽度 */
+    border-collapse: collapse;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: var(--plan-border-radius);
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    table-layout: auto; /* 自动调整列宽 */
+}
+
+.workout-table th,
+.workout-table td {
+    padding: 12px 10px; /* 减少内边距 */
+    text-align: left;
+    border-bottom: var(--table-border);
+    white-space: nowrap; /* 防止内容换行 */
+    font-size: 0.9rem; /* 适当减小字体大小 */
+}
+
+/* 调整列宽 */
+.workout-table th:nth-child(1),
+.workout-table td:nth-child(1) {
+    width: 15%; /* 距离列 */
+    min-width: 80px;
+}
+
+.workout-table th:nth-child(2),
+.workout-table td:nth-child(2) {
+    width: 15%; /* 泳姿列 */
+    min-width: 80px;
+}
+
+.workout-table th:nth-child(3),
+.workout-table td:nth-child(3) {
+    width: 30%; /* 内容列 */
+    min-width: 120px;
+}
+
+.workout-table th:nth-child(4),
+.workout-table td:nth-child(4) {
+    width: 40%; /* 说明列 */
+    min-width: 150px;
+}
+
+.workout-table th {
+    background: var(--table-header-bg);
+    font-weight: bold;
+    color: var(--table-header-color);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.workout-table tr {
+    transition: background-color 0.2s;
+}
+
+.workout-table tr:hover {
+    background: #fafafa;
+}
+
+.workout-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* 训练项目样式 */
+.workout-distance {
+    font-weight: bold;
+    font-size: 1rem;
+    color: #333;
+}
+
+.workout-stroke {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.workout-stroke.freestyle {
+    background: var(--stroke-freestyle-bg);
+    color: var(--stroke-freestyle-color);
+}
+
+.workout-stroke.backstroke {
+    background: var(--stroke-backstroke-bg);
+    color: var(--stroke-backstroke-color);
+}
+
+.workout-stroke.breaststroke {
+    background: var(--stroke-breaststroke-bg);
+    color: var(--stroke-breaststroke-color);
+}
+
+.workout-stroke.butterfly {
+    background: var(--stroke-butterfly-bg);
+    color: var(--stroke-butterfly-color);
+}
+
+.workout-stroke.main {
+    background: var(--stroke-main-bg);
+    color: var(--stroke-main-color);
+}
+
+.workout-detail {
+    color: #666;
+    font-size: 0.85rem;
+}
+
+.workout-note {
+    color: #888;
+    font-size: 0.8rem;
+    font-style: italic;
+}
+
+/* 训练项目样式（旧样式，保留兼容性） */
+.workout-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    margin: 8px 0;
+    background: var(--table-bg);
+    border-radius: var(--plan-border-radius);
+    box-shadow: var(--plan-shadow);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.workout-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.workout-item .workout-distance {
+    margin-right: 15px;
+    min-width: 80px;
+}
+
+.workout-item .workout-stroke {
+    margin-right: 15px;
+    min-width: 60px;
+}
+
+.workout-item .workout-detail {
+    flex: 1;
+}
+
+/* 页面背景样式 */
+body {
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4eaf2 100%);
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+/* 确保docsify容器充分利用宽度 */
+#app {
+    width: 100%;
+    max-width: 100%;
+}
+
+/* 确保内容区域没有多余的边距 */
+.content {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    max-width: 100%;
+}
+
+/* 调整docsify默认主题的背景透明度 */
+.markdown-section {
+    background: transparent;
+    padding: 20px;
+}
+
+/* 确保表格在docsify中正常显示 */
+.markdown-section table {
+    display: table;
+    width: 90%;
+    margin: 0;
+}
+
+.markdown-section th,
+.markdown-section td {
+    padding: 12px 15px;
+    border: none;
+}
+
+/* 响应式设计 - 针对侧边栏展开和小屏幕 */
+@media (max-width: 1024px) {
+    /* 调整计划容器的内边距 */
+    .plan-container {
+        padding: 10px;
+    }
+
+    /* 表格响应式设计 - 所有屏幕尺寸都启用横向滚动 */
+    .plan-content {
+        overflow-x: auto;
+        margin: 15px -10px -10px -10px;
+        padding: 0 10px 10px 10px;
+    }
+
+    .workout-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+        min-width: auto;
+    }
+
+    .workout-table th,
+    .workout-table td {
+        padding: 8px 10px;
+        font-size: 0.85rem;
+    }
+
+    /* 调整表头字体大小 */
+    .workout-table th {
+        font-size: 0.8rem;
+    }
+
+    /* 调整训练项目字体大小 */
+    .workout-distance {
+        font-size: 0.95rem;
+    }
+
+    .workout-stroke {
+        font-size: 0.75rem;
+        padding: 2px 6px;
+    }
+
+    .workout-detail {
+        font-size: 0.8rem;
+    }
+
+    .workout-note {
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .plan-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .plan-purpose, .plan-time {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .workout-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .workout-item .workout-distance,
+    .workout-item .workout-stroke {
+        margin-right: 0;
+        margin-bottom: 5px;
+    }
+}
