@@ -8,6 +8,10 @@ npm i docsify-cli -g
 docsify serve docs
 ```
 
+## GitHub pages 服务
+
+[戳我](https://murphy-955.github.io/traning-plan/#/)
+
 ## Intellij IDEA 实时模板配置
 
 1. 打开 Settings → Editor → File and Code Templates
