@@ -6,7 +6,7 @@
     color: white; /* 白色文字 */
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
@@ -17,8 +17,21 @@
 .plan-container:hover {
     background: white; /* 白色背景 */
     color: black; /* 黑色文字 */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     border-color: #dee2e6;
+}
+
+/* 优化小屏幕下的卡片样式 */
+@media (max-width: 768px) {
+    .plan-container {
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+        border-radius: 8px;
+        padding: 8px;
+    }
+    
+    .plan-container:hover {
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    }
 }
 
 /* 确保大部分元素继承容器的文字颜色 - 增强优先级 */
@@ -67,15 +80,45 @@
 /* 将训练时间颜色写死为蓝色 */
 .plan-container .plan-time {
     color: inherit !important;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
 }
 
+/* 修复计划时间内日期标签的样式 */
+.plan-container .plan-time .plan-date {
+    font-weight: bold;
+    margin-right: 8px;
+    color: inherit !important;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+}
+
+/* 修复计划时间内span的样式 */
 .plan-container .plan-time span {
     transition: none !important;
+    padding-top: 0 !important;
+    display: flex;
+    align-items: center;
+    font-size: 1.1rem;
 }
 
 .plan-container:hover .plan-time span {
     color: blue !important;
     transition: none !important;
+}
+
+/* 调整PC端的字体大小 */
+@media (min-width: 769px) {
+    .plan-container .plan-time span {
+        font-size: 1.5rem;
+    }
+    
+    .plan-container .plan-time .plan-date {
+        font-size: 1.1rem;
+    }
 }
 
 /* 为泳姿设置固定颜色 */
@@ -642,61 +685,157 @@ body {
     /* 调整计划容器的内边距 */
     .plan-container {
         padding: 10px;
+        margin: 10px auto;
     }
 
     /* 表格响应式设计 - 所有屏幕尺寸都启用横向滚动 */
     .plan-content {
         overflow-x: auto;
-        margin: 15px -10px -10px -10px;
+        margin: 10px -10px -10px -10px;
         padding: 0 10px 10px 10px;
+        border-radius: 0 0 8px 8px;
     }
 
+    /* 优化表格滚动体验 */
     .workout-table {
         display: block;
         overflow-x: auto;
         white-space: nowrap;
         min-width: auto;
+        border-radius: 6px;
+        -webkit-overflow-scrolling: touch; /* 优化移动端滚动体验 */
+        scrollbar-width: thin; /* 优化滚动条样式 */
     }
 
+    /* 调整表格单元格样式 */
     .workout-table th,
     .workout-table td {
-        padding: 8px 10px;
-        font-size: 0.85rem;
+        padding: 6px 8px;
+        font-size: 0.8rem;
+        line-height: 1.3;
     }
 
-    /* 调整表头字体大小 */
+    /* 调整表头样式 */
     .workout-table th {
-        font-size: 0.8rem;
+        font-size: 0.75rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 0.3px;
+        background: rgba(255, 255, 255, 0.3) !important;
     }
 
     /* 调整训练项目字体大小 */
     .workout-distance {
-        font-size: 0.95rem;
+        font-size: 0.9rem;
+        font-weight: bold;
     }
 
     .workout-stroke {
-        font-size: 0.75rem;
+        font-size: 0.7rem;
         padding: 2px 6px;
+        border-radius: 10px;
     }
 
     .workout-detail {
-        font-size: 0.8rem;
+        font-size: 0.75rem;
     }
 
     .workout-note {
-        font-size: 0.75rem;
+        font-size: 0.7rem;
+        font-style: italic;
+    }
+
+    /* 优化表格列宽 */
+    .workout-table th:nth-child(1),
+    .workout-table td:nth-child(1) {
+        min-width: 70px;
+    }
+
+    .workout-table th:nth-child(2),
+    .workout-table td:nth-child(2) {
+        min-width: 70px;
+    }
+
+    .workout-table th:nth-child(3),
+    .workout-table td:nth-child(3) {
+        min-width: 100px;
+    }
+
+    .workout-table th:nth-child(4),
+    .workout-table td:nth-child(4) {
+        min-width: 120px;
+    }
+
+    /* 调整标题样式 */
+    .plan-content h4 {
+        font-size: 1rem;
+        margin-bottom: 8px;
+        padding: 0 5px;
+    }
+
+    /* 调整分割线样式 */
+    .divider {
+        margin: 10px 0;
+    }
+
+    .divider.thin {
+        margin: 8px 0;
     }
 }
 
 @media (max-width: 768px) {
+    /* 调整计划头部布局，将日期和目的在一行展示 */
     .plan-header {
-        flex-direction: column;
-        align-items: flex-start;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
     }
 
-    .plan-purpose, .plan-time {
+    /* 调整日期样式 */
+    .plan-header .plan-date {
+        font-size: 1.1rem !important;
+        margin-right: 10px;
+        margin-bottom: 0;
+    }
+
+    /* 调整目的样式 */
+    .plan-header .plan-purpose {
+        font-size: 0.8rem !important;
         margin-right: 0;
+        margin-bottom: 0;
+        padding: 3px 10px;
+    }
+
+    /* 调整训练时间样式 */
+    .plan-time {
+        font-size: 0.9rem !important;
         margin-bottom: 10px;
+        display: flex !important;
+        align-items: center !important;
+    }
+
+    /* 调整训练时间内span的样式 */
+    .plan-time span {
+        font-size: 1.2rem !important;
+        padding-top: 0 !important;
+        display: flex !important;
+        align-items: center !important;
+    }
+
+    /* 调整计划时间内的日期样式 */
+    .plan-time .plan-date {
+        font-size: 0.9rem !important;
+        margin-right: 5px;
+        display: flex !important;
+        align-items: center !important;
+        font-weight: bold !important;
+    }
+
+    /* 调整计划目的和时间的间距 */
+    .plan-purpose {
+        margin-right: 10px;
+        margin-bottom: 0;
     }
 
     .workout-item {

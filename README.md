@@ -34,7 +34,7 @@ docsify serve docs
   
   <div class="plan-time"> 
     <div class="plan-date">训练时间:</div>
-    <span style="font-size: 24px;padding-top: 5px;">$time$</span>
+    <span style="padding-top: 5px;">$time$</span>
   </div>
   
   <hr class="divider">
