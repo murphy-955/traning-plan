@@ -25,5 +25,77 @@
   </script>
   <!-- Docsify v4 -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/docsify/4.13.1/docsify.min.js"></script>
+
+
+  <script>
+  window.$docsify = window.$docsify || {};
+  window.$docsify.plugins = (window.$docsify.plugins || []).concat(function(hook, vm) {
+    hook.doneEach(function() {
+      // 找到所有 <pre><code class="lang-plan"> ... </code></pre>
+      document.querySelectorAll('pre code.lang-plan').forEach(function(node) {
+        const raw  = node.textContent.trim().split('\n');
+        const date = raw[0];          // 2026-01-01
+        const purpose = raw[1];       // 调整
+        const time  = raw[2];         // 10:00-11:30
+        const rows = raw.slice(3);    // 剩余行
+
+        // 生成表格行
+        let trs = '';
+        rows.forEach(r => {
+          // 简单解析：8×100 自由泳 放松拉长
+          const [dist, stroke, ...rest] = r.split(' ');
+          const note = rest.join(' ');
+          trs += `<tr>
+                  <td><span class="workout-distance">${dist}</span></td>
+                  <td><span class="workout-stroke ${strokeClass(stroke)}">${stroke}</span></td>
+                  <td><span class="workout-detail"></span></td>
+                  <td><span class="workout-note">${note}</span></td>
+                </tr>`;
+        });
+
+        // 拼出完整 HTML
+        const html = `
+<div class="plan-container">
+  <div class="plan-header">
+    <div class="plan-date">${weekday(date)}</div>
+    <div class="plan-purpose ${purposeClass(purpose)}">${purpose}</div>
+  </div>
+  <hr class="divider">
+  <div class="plan-time">
+    <div class="plan-date">训练时间:</div>
+    <span>${date} ${time}</span>
+  </div>
+  <hr class="divider">
+  <div class="plan-content">
+    <h4>训练内容：</h4>
+    <table class="workout-table">
+      <thead><tr><th>距离</th><th>泳姿</th><th>内容</th><th>说明</th></tr></thead>
+      <tbody>${trs}</tbody>
+    </table>
+  </div>
+</div>`;
+
+        // 替换节点
+        const wrapper = document.createElement('div');
+        wrapper.innerHTML = html;
+        node.parentNode.replaceWith(wrapper);
+      });
+    });
+
+    /* 下面几个小工具函数 */
+    function strokeClass(s) {
+      return {自由泳:'freestyle',主项:'main',仰泳:'backstroke',
+        蛙泳:'breaststroke',蝶泳:'butterfly'}[s]||'other';
+    }
+    function purposeClass(p) {
+      return {调整:'adjust',强度:'strength',有氧:'aerobic',
+        高有氧:'high-aerobic',速度:'speed',比赛速度:'race-speed',
+        陆上:'land'}[p]||'other';
+    }
+    function weekday(d) {   // 简单写，可按需要增强
+      return ['周日','周一','周二','周三','周四','周五','周六'][new Date(d).getDay()];
+    }
+  });
+  </script>
 </body>
 </html>
