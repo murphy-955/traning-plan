@@ -42,13 +42,16 @@
         // 生成表格行
         let trs = '';
         rows.forEach(r => {
-          // 简单解析：8×100 自由泳 放松拉长
-          const [dist, stroke, ...rest] = r.split(' ');
-          const note = rest.join(' ');
+          // 解析：8×100 自由泳 放松拉长 → 距离、泳姿、内容、说明
+          const parts = r.split(' ');
+          const dist = parts[0] || '';
+          const stroke = parts[1] || '';
+          const content = parts[2] || '';
+          const note = parts.slice(3).join(' ') || '';
           trs += `<tr>
                   <td><span class="workout-distance">${dist}</span></td>
                   <td><span class="workout-stroke ${strokeClass(stroke)}">${stroke}</span></td>
-                  <td><span class="workout-detail"></span></td>
+                  <td><span class="workout-detail">${content}</span></td>
                   <td><span class="workout-note">${note}</span></td>
                 </tr>`;
         });
